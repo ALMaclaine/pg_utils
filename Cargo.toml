@@ -1,0 +1,12 @@
+[package]
+name = "pg_utils"
+version = "0.1.0"
+authors = ["ALMaclaine <almaclaine@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+r2d2 = "0.8"
+r2d2_postgres = "0.18"
+tokio-postgres = "0.7.0"
