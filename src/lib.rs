@@ -20,7 +20,7 @@ pub type ConnectionManager = PostgresConnectionManager<NoTls>;
 pub type ConnectionPool = Pool<ConnectionManager>;
 pub type ConnectionPooled = PooledConnection<ConnectionManager>;
 
-pub fn execute(mut db: ConnectionPool, query: String) -> Result<Vec<Row>, Error> {
+pub fn execute(mut db: ConnectionPooled, query: String) -> Result<Vec<Row>, Error> {
     db.query(query.as_str(), &[])
 }
 
