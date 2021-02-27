@@ -4,10 +4,10 @@ use tokio_postgres::error::Error;
 use std::fmt;
 
 pub struct ConnectionInfo {
-    pub host: &'static str,
-    pub password: &'static str,
-    pub database: &'static str,
-    pub user: &'static str,
+    pub host: String,
+    pub password: String,
+    pub database: String,
+    pub user: String,
 }
 
 impl fmt::Display for ConnectionInfo {
