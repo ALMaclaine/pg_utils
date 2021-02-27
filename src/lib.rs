@@ -38,5 +38,5 @@ pub fn create_manager(conInfo: ConnectionInfo) -> ConnectionManager {
 }
 
 pub fn create_pool(conInfo: ConnectionInfo) -> ConnectionPool {
-    r2d2::Pool::new(create_manager(conInfo)).unwrap();
+    r2d2::Pool::new(create_manager(conInfo)).unwrap()
 }
