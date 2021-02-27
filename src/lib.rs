@@ -30,13 +30,13 @@ pub fn process_rows<'a, T: From<&'a Row>>(res: &'a Vec<Row>) -> Vec<T> {
         .collect::<Vec<T>>()
 }
 
-pub fn create_manager(conInfo: ConnectionInfo) -> ConnectionManager {
+pub fn create_manager(con_info: ConnectionInfo) -> ConnectionManager {
     PostgresConnectionManager::new(
-        conInfo.to_string().parse().unwrap(),
+        con_info.to_string().parse().unwrap(),
         NoTls,
     )
 }
 
-pub fn create_pool(conInfo: ConnectionInfo) -> ConnectionPool {
-    r2d2::Pool::new(create_manager(conInfo)).unwrap()
+pub fn create_pool(con_info: ConnectionInfo) -> ConnectionPool {
+    r2d2::Pool::new(create_manager(con_info)).unwrap()
 }
