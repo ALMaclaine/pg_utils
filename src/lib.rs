@@ -3,6 +3,10 @@ use r2d2_postgres::{postgres::{NoTls, Row}, PostgresConnectionManager};
 use tokio_postgres::error::Error;
 use std::fmt;
 
+pub type ConnectionManager = PostgresConnectionManager<NoTls>;
+pub type ConnectionPool = Pool<ConnectionManager>;
+pub type ConnectionPooled = PooledConnection<ConnectionManager>;
+
 pub struct ConnectionInfo {
     pub host: String,
     pub password: String,
@@ -15,10 +19,6 @@ impl fmt::Display for ConnectionInfo {
         write!(f, "host={} user={} password={} dbname={}", self.host, self.user, self.password, self.database)
     }
 }
-
-pub type ConnectionManager = PostgresConnectionManager<NoTls>;
-pub type ConnectionPool = Pool<ConnectionManager>;
-pub type ConnectionPooled = PooledConnection<ConnectionManager>;
 
 pub fn execute(mut db: ConnectionPooled, query: String) -> Result<Vec<Row>, Error> {
     db.query(query.as_str(), &[])
