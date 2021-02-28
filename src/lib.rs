@@ -30,6 +30,14 @@ pub fn process_rows<'a, T: From<&'a Row>>(res: &'a Vec<Row>) -> Vec<T> {
         .collect::<Vec<T>>()
 }
 
+pub fn process_row<'a, T: From<&'a Row>>(res: &'a Vec<Row>) -> Option<T> {
+    if res.len() > 0 {
+        Some(<T as From<&Row>>::from(res.get(0).unwrap()))
+    } else {
+        None
+    }
+}
+
 pub fn create_manager(con_info: ConnectionInfo) -> ConnectionManager {
     PostgresConnectionManager::new(
         con_info.to_string().parse().unwrap(),
